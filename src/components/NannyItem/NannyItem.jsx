@@ -7,6 +7,7 @@ import RateIcon from "../../assets/rate.svg?react";
 import OnlineIcon from "../../assets/online.svg?react";
 import VectorIcon from "../../assets/vector.svg?react";
 import { useState } from "react";
+import Reviews from "../Reviews/Reviews.jsx";
 
 export default function NannyItem({ nanny }) {
   const [showReviews, setShowReviews] = useState(false);
@@ -84,22 +85,7 @@ export default function NannyItem({ nanny }) {
             Read more
           </button>
         ) : (
-          <div>
-            <div>
-              {nanny.reviews.map((review, idx) => (
-                <div key={idx}>
-                  <p>{review.reviewer}</p>
-                  <div>
-                    <RateIcon />
-                    <p>{review.rating}</p>
-                  </div>
-                  <p>{review.comment}</p>
-                </div>
-              ))}
-            </div>
-
-            <button type="button">Make an appointment</button>
-          </div>
+          <Reviews reviews={nanny.reviews} />
         )}
       </div>
     </div>
