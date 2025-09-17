@@ -5,7 +5,6 @@ import Nannies from "./pages/Nannies/Nannies";
 function App() {
   return (
     <>
-      <Header />
       <Nannies />
     </>
   );

@@ -1,27 +1,38 @@
+import s from "./NannyItem.module.css";
 import calculateAge from "../../utils/calculateAge.js";
 import formatCharacters from "../../utils/formatCharacters.js";
 import FavoriteToggle from "../FavoriteToggle/FavoriteToggle.jsx";
 import LocationIcon from "../../assets/location.svg?react";
 import RateIcon from "../../assets/rate.svg?react";
+import OnlineIcon from "../../assets/online.svg?react";
+import VectorIcon from "../../assets/vector.svg?react";
 
 export default function NannyItem({ nanny }) {
   return (
     <div>
-      <img src={nanny.avatar_url} alt={nanny.name} />
-      <p>Nanny</p>
-
-      <div>
-        <div>
-          <LocationIcon />
-          <p>{nanny.location}</p>
-        </div>
-        <div>
-          <RateIcon />
-          <p>Rating: {nanny.rating}</p>
-        </div>
-        <p>Price / 1 hour: {nanny.price_per_hour}$</p>
+      <div className={s.photoWrapper}>
+        <OnlineIcon className={s.online} />
+        <img src={nanny.avatar_url} alt={nanny.name} className={s.photo} />
       </div>
-      <FavoriteToggle />
+
+      <div className={s.topInfo}>
+        <p>Nanny</p>
+
+        <div className={s.generalInfo}>
+          <div className={s.location}>
+            <LocationIcon />
+            <p>{nanny.location}</p>
+          </div>
+          <VectorIcon />
+          <div className={s.rating}>
+            <RateIcon />
+            <p>Rating: {nanny.rating}</p>
+          </div>
+          <VectorIcon />
+          <p>Price / 1 hour: {nanny.price_per_hour}$</p>
+        </div>
+        <FavoriteToggle />
+      </div>
 
       <p>{nanny.name}</p>
       <ul>

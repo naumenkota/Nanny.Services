@@ -1,0 +1,44 @@
+.photo {
+    border-radius: 15px;
+    width: 96px;
+    height: 96px; 
+    object-fit: cover;
+}
+
+.photoWrapper{
+    border: 2px solid rgba(16, 57, 49, 0.2);
+    border-radius: 30px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+}
+
+.online {
+    position: absolute;
+    top: 9px;
+    right: 14px;
+    width: 14px;
+    height: 14px;
+}
+
+.topInfo{
+    display: flex;
+    align-items: center;
+}
+
+.generalInfo{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.location,
+.rating {
+    display: flex;
+        gap: 8px;
+        align-items: center;
+}
