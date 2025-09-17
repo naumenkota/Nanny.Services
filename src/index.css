@@ -1,7 +1,7 @@
 :root {
     --dark-green: #103931;
     --light-green: rgba(16, 57, 49, 0.2);
-    --main-font: "Helvetica Neue", sans-serif;
+    --main-font: "Helvetica Neue", "Inter", sans-serif;
 }
 
 * {
@@ -15,6 +15,7 @@ html {
     font-family: var(--main-font);
     font-size: 16px;
     color: inherit;
+    background-color: #F3F3F3;
 }
 
 ul,

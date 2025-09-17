@@ -6,72 +6,102 @@ import LocationIcon from "../../assets/location.svg?react";
 import RateIcon from "../../assets/rate.svg?react";
 import OnlineIcon from "../../assets/online.svg?react";
 import VectorIcon from "../../assets/vector.svg?react";
+import { useState } from "react";
 
 export default function NannyItem({ nanny }) {
+  const [showReviews, setShowReviews] = useState(false);
+  const handleReadMore = () => {
+    setShowReviews(true);
+  };
+
   return (
-    <div>
+    <div className={s.nannyItem}>
       <div className={s.photoWrapper}>
         <OnlineIcon className={s.online} />
         <img src={nanny.avatar_url} alt={nanny.name} className={s.photo} />
       </div>
 
-      <div className={s.topInfo}>
-        <p>Nanny</p>
+      <div className={s.wrapper}>
+        <div className={s.topInfo}>
+          <div className={s.nameInfo}>
+            <p className={s.nanny}>Nanny</p>
+            <p className={s.name}>{nanny.name}</p>
+          </div>
 
-        <div className={s.generalInfo}>
-          <div className={s.location}>
-            <LocationIcon />
-            <p>{nanny.location}</p>
+          <div>
+            <div className={s.toggleWrapper}>
+              <div className={s.generalInfo}>
+                <div className={s.location}>
+                  <LocationIcon />
+                  <p className={s.text}>{nanny.location}</p>
+                </div>
+                <VectorIcon />
+                <div className={s.rating}>
+                  <RateIcon />
+                  <p className={s.text}>Rating: {nanny.rating}</p>
+                </div>
+                <VectorIcon />
+                <p className={s.text}>
+                  Price / 1 hour:
+                  <span className={s.span}> {nanny.price_per_hour}$</span>
+                </p>
+              </div>
+
+              <FavoriteToggle />
+            </div>
           </div>
-          <VectorIcon />
-          <div className={s.rating}>
-            <RateIcon />
-            <p>Rating: {nanny.rating}</p>
-          </div>
-          <VectorIcon />
-          <p>Price / 1 hour: {nanny.price_per_hour}$</p>
         </div>
-        <FavoriteToggle />
-      </div>
 
-      <p>{nanny.name}</p>
-      <ul>
-        <li>
-          <p>Age:</p>
-          <p> {calculateAge(nanny.birthday)}</p>
-        </li>
-        <li>
-          <p>Experience:</p>
-          <p>{nanny.experience}</p>
-        </li>
-        <li>
-          <p>Kids Age:</p>
-          <p>{nanny.kids_age}</p>
-        </li>
-        <li>
-          <p>Characters:</p>
-          <p> {formatCharacters(nanny.characters)}</p>
-        </li>
-        <li>
-          <p>Education:</p>
-          <p>{nanny.education}</p>
-        </li>
-      </ul>
-      <p>{nanny.about}</p>
+        <ul className={s.list}>
+          <li className={s.item}>
+            <p className={`${s.text}  ${s.textGray}`}>Age:</p>
+            <p className={s.text} style={{ textDecoration: "underline" }}>
+              {calculateAge(nanny.birthday)}
+            </p>
+          </li>
+          <li className={s.item}>
+            <p className={`${s.text}  ${s.textGray}`}>Experience:</p>
+            <p className={s.text}>{nanny.experience}</p>
+          </li>
+          <li className={s.item}>
+            <p className={`${s.text}  ${s.textGray}`}>Kids Age:</p>
+            <p className={s.text}>{nanny.kids_age}</p>
+          </li>
+          <li className={s.item}>
+            <p className={`${s.text}  ${s.textGray}`}>Characters:</p>
+            <p className={s.text}> {formatCharacters(nanny.characters)}</p>
+          </li>
+          <li className={s.item}>
+            <p className={`${s.text}  ${s.textGray}`}>Education:</p>
+            <p className={s.text}>{nanny.education}</p>
+          </li>
+        </ul>
 
-      <button type="button">Show more</button>
+        <p className={s.about}>{nanny.about}</p>
 
-      <div>
-        {nanny.reviews.map((review, idx) => (
-          <div key={idx}>
-            <p>{review.reviewer}</p>
-            <p>{review.rating}</p>
-            <p>{review.comment}</p>
+        {!showReviews ? (
+          <button type="button" className={s.readMore} onClick={handleReadMore}>
+            Read more
+          </button>
+        ) : (
+          <div>
+            <div>
+              {nanny.reviews.map((review, idx) => (
+                <div key={idx}>
+                  <p>{review.reviewer}</p>
+                  <div>
+                    <RateIcon />
+                    <p>{review.rating}</p>
+                  </div>
+                  <p>{review.comment}</p>
+                </div>
+              ))}
+            </div>
+
+            <button type="button">Make an appointment</button>
           </div>
-        ))}
+        )}
       </div>
-
-      <button type="button">Make an appointment</button>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { database } from "../../services/firebase.js";
 import { ref, get } from "firebase/database";
 import { useEffect, useState } from "react";
 import NannyItem from "../NannyItem/NannyItem.jsx";
+import s from "./NanniesList.module.css";
 
 export default function NanniesList() {
   const [nannies, setNannies] = useState([]);
@@ -21,7 +22,7 @@ export default function NanniesList() {
   }, []);
 
   return (
-    <div>
+    <div className={s.nannies}>
       {nannies.map((nanny, index) => (
         <NannyItem key={index} nanny={nanny} />
       ))}

@@ -1,3 +1,20 @@
+.nannyItem{
+   border-radius: 24px;
+    width: 1184px;
+    min-height: 318px;
+    background-color: #FBFBFB;
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+      
+}
+
+.wrapper{
+    display: flex; 
+    flex-direction: column;
+    
+
+}
 .photo {
     border-radius: 15px;
     width: 96px;
@@ -14,6 +31,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    flex-shrink: 0;
     
 }
 
@@ -28,6 +46,28 @@
 .topInfo{
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px; 
+}
+
+.nameInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nanny{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #8a8a89;
+}
+
+.name{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1;
+    color: #11101c;
 }
 
 .generalInfo{
@@ -39,6 +79,64 @@
 .location,
 .rating {
     display: flex;
-        gap: 8px;
-        align-items: center;
+    gap: 8px;
+    align-items: center;
+
+}
+
+.span{
+color: #38cd3e;
+}
+
+.toggleWrapper{
+    display:flex;
+    gap: 48px;
+}
+
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+    
+}
+
+.item{
+    height: 40px;
+    border-radius: 24px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f3f3;
+    gap: 3px
+
+}
+
+.text{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #11101c;
+      
+}
+
+.textGray{ color: rgba(17, 16, 28, 0.5);}
+
+.about{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    color: rgba(17, 16, 28, 0.5);
+    margin-bottom: 14px;
+}
+
+.readMore{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: #11101c;
+    align-self: flex-start
 }
