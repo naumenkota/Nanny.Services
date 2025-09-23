@@ -5,11 +5,18 @@ import * as yup from "yup";
 import { auth, database } from "../../services/firebase.js";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, set } from "firebase/database";
+import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 
 const RegisterFormSchema = yup.object().shape({
-  name: yup.string().min(2).required("Name is required"),
+  name: yup
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .required("Name is required"),
   email: yup.string().email("Invalid email").required("Email is required"),
-  password: yup.string().min(6).required("Password is required"),
+  password: yup
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
 });
 
 export default function RegisterForm() {
@@ -49,24 +56,32 @@ export default function RegisterForm() {
         need some information. Please provide us with the following information.
       </p>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-        <input {...register("name")} placeholder="Name" className={s.input} />
-        {errors.name && <p className={s.error}>{errors.name.message}</p>}
+        <div className={s.inputWrapper}>
+          <input {...register("name")} placeholder="Name" className={s.input} />
+          <ErrorMessage message={errors.name?.message} />
+        </div>
+        <div className={s.inputWrapper}>
+          <input
+            {...register("email")}
+            placeholder="Email"
+            className={s.input}
+          />
+          <ErrorMessage message={errors.email?.message} />
+        </div>
+        <div className={s.inputWrapper}>
+          <input
+            {...register("password")}
+            placeholder="Password"
+            className={s.input}
+          />
+          <ErrorMessage message={errors.password?.message} />
+        </div>
 
-        <input {...register("email")} placeholder="Email" className={s.input} />
-        {errors.email && <p className={s.error}>{errors.email.message}</p>}
-
-        <input
-          {...register("password")}
-          placeholder="Password"
-          className={s.input}
-        />
-        {errors.password && (
-          <p className={s.error}>{errors.password.message}</p>
-        )}
-
-        <button type="submit" className={s.btn}>
-          Sign Up
-        </button>
+        <div className={s.btnWrapper}>
+          <button type="submit" className={s.btn}>
+            Sign Up
+          </button>
+        </div>
       </form>
     </div>
   );

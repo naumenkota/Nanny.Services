@@ -26,8 +26,9 @@ font-weight: 400;
 .form{
 display: flex;
 flex-direction: column;
-gap:18px;
 }
+
+
 
 
 .input{
@@ -41,7 +42,7 @@ gap:18px;
 
 
 .btn{
-   
+  
     border-radius: 30px;
       
         width: 438px;
@@ -59,3 +60,19 @@ gap:18px;
 
 
 }
+
+
+.inputWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;  
+   
+}
+
+
+.btnWrapper{
+    margin-top: 40px;
+}
+
+
+
