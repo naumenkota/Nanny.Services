@@ -24,6 +24,20 @@ export default function LoginForm() {
     resolver: yupResolver(LoginFormSchema),
   });
 
+  const onSubmit = async (data) => {
+    console.log("Logging in with:", data);
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      console.log("User logged in:", userCredential.user);
+    } catch (error) {
+      console.error("Login error:", error.code, error.message);
+    }
+  };
+
   return (
     <div className={s.wrapper}>
       <h2 className={s.title}>Log In</h2>
@@ -31,14 +45,23 @@ export default function LoginForm() {
         Welcome back! Please enter your credentials to access your account and
         continue your babysitter search.
       </p>
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className={s.inputGroup}>
           <div className={s.inputWrapper}>
-            <input placeholder="Email" className={s.input} />
+            <input
+              {...register("email")}
+              placeholder="Email"
+              className={s.input}
+            />
             <ErrorMessage message={errors.email?.message} />
           </div>
           <div className={s.inputWrapper}>
-            <input placeholder="Password" className={s.input} />
+            <input
+              {...register("password")}
+              placeholder="Password"
+              type="password"
+              className={s.input}
+            />
             <ErrorMessage message={errors.password?.message} />
           </div>
         </div>

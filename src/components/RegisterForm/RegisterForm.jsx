@@ -77,6 +77,7 @@ export default function RegisterForm() {
             <input
               {...register("password")}
               placeholder="Password"
+              type="password"
               className={s.input}
             />
             <ErrorMessage message={errors.password?.message} />

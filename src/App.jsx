@@ -6,6 +6,7 @@ import Nannies from "./pages/Nannies/Nannies";
 function App() {
   return (
     <>
+      <RegisterForm />
       <LoginForm />
     </>
   );
