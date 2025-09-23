@@ -56,25 +56,31 @@ export default function RegisterForm() {
         need some information. Please provide us with the following information.
       </p>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-        <div className={s.inputWrapper}>
-          <input {...register("name")} placeholder="Name" className={s.input} />
-          <ErrorMessage message={errors.name?.message} />
-        </div>
-        <div className={s.inputWrapper}>
-          <input
-            {...register("email")}
-            placeholder="Email"
-            className={s.input}
-          />
-          <ErrorMessage message={errors.email?.message} />
-        </div>
-        <div className={s.inputWrapper}>
-          <input
-            {...register("password")}
-            placeholder="Password"
-            className={s.input}
-          />
-          <ErrorMessage message={errors.password?.message} />
+        <div className={s.inputGroup}>
+          <div className={s.inputWrapper}>
+            <input
+              {...register("name")}
+              placeholder="Name"
+              className={s.input}
+            />
+            <ErrorMessage message={errors.name?.message} />
+          </div>
+          <div className={s.inputWrapper}>
+            <input
+              {...register("email")}
+              placeholder="Email"
+              className={s.input}
+            />
+            <ErrorMessage message={errors.email?.message} />
+          </div>
+          <div className={s.inputWrapper}>
+            <input
+              {...register("password")}
+              placeholder="Password"
+              className={s.input}
+            />
+            <ErrorMessage message={errors.password?.message} />
+          </div>
         </div>
 
         <div className={s.btnWrapper}>

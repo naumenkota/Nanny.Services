@@ -23,13 +23,6 @@ font-weight: 400;
     margin-bottom: 40px;
 }
 
-.form{
-display: flex;
-flex-direction: column;
-}
-
-
-
 
 .input{
     border: 1px solid rgba(17, 16, 28, 0.1);
@@ -42,7 +35,7 @@ flex-direction: column;
 
 
 .btn{
-  
+  margin-top: 40px;
     border-radius: 30px;
       
         width: 438px;
@@ -66,12 +59,14 @@ flex-direction: column;
     display: flex;
     flex-direction: column;
     gap: 1px;  
+    position: relative
    
 }
 
-
-.btnWrapper{
-    margin-top: 40px;
+.inputGroup{
+    display: flex;
+    gap: 18px;
+    flex-direction: column;
 }
 
 
