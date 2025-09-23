@@ -39,7 +39,7 @@ export default function NannyItem({ nanny }) {
                 <VectorIcon />
                 <div className={s.rating}>
                   <RateIcon />
-                  <p className={s.text}>Rating: {nanny.rating}</p>
+                  <p className={s.text}>Rating: {nanny.rating.toFixed(1)}</p>
                 </div>
                 <VectorIcon />
                 <p className={s.text}>

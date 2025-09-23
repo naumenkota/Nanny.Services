@@ -3,21 +3,28 @@ import RateIcon from "../../assets/rate.svg?react";
 
 export default function Reviews({ reviews }) {
   return (
-    <div>
-      <div>
+    <div className={s.wrapper}>
+      <ul className={s.reviewsList}>
         {reviews.map((review, idx) => (
-          <div key={idx}>
-            <p>{review.reviewer}</p>
-            <div>
-              <RateIcon />
-              <p>{review.rating}</p>
+          <li key={idx}>
+            <div className={s.topInfo}>
+              <div className={s.avatar}>{review.reviewer[0].toUpperCase()}</div>
+              <div className={s.topInfoRigth}>
+                <p>{review.reviewer}</p>
+                <div className={s.rate}>
+                  <RateIcon />
+                  <p>{review.rating.toFixed(1)}</p>
+                </div>
+              </div>
             </div>
-            <p>{review.comment}</p>
-          </div>
+            <p className={s.comment}>{review.comment}</p>
+          </li>
         ))}
-      </div>
+      </ul>
 
-      <button type="button">Make an appointment</button>
+      <button type="button" className={s.btn}>
+        Make an appointment
+      </button>
     </div>
   );
 }
