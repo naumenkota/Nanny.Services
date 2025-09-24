@@ -6,9 +6,8 @@ import { auth } from "../../services/firebase.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 import XIcon from "../../assets/x.svg?react";
-import EyeOnIcon from "../../assets/eyeon.svg?react";
-import EyeOffIcon from "../../assets/eyeoff.svg?react";
 import { useState } from "react";
+import PasswordToggle from "../PasswordToggle/PasswordToggle.jsx";
 
 const LoginFormSchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -68,13 +67,10 @@ export default function LoginForm() {
               type={showPassword ? "text" : "password"}
               className={s.input}
             />
-            <button
-              className={s.eyeIcon}
-              type="button"
-              onClick={() => setShowPassword((prev) => !prev)}
-            >
-              {showPassword ? <EyeOnIcon /> : <EyeOffIcon />}
-            </button>
+            <PasswordToggle
+              show={showPassword}
+              toggle={() => setShowPassword((prev) => !prev)}
+            />
             <ErrorMessage message={errors.password?.message} />
           </div>
         </div>

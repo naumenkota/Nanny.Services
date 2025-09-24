@@ -7,9 +7,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, set } from "firebase/database";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 import XIcon from "../../assets/x.svg?react";
-import EyeOnIcon from "../../assets/eyeon.svg?react";
-import EyeOffIcon from "../../assets/eyeoff.svg?react";
 import { useState } from "react";
+import PasswordToggle from "../PasswordToggle/PasswordToggle.jsx";
 
 const RegisterFormSchema = yup.object().shape({
   name: yup
@@ -87,13 +86,10 @@ export default function RegisterForm() {
               type={showPassword ? "text" : "password"}
               className={s.input}
             />
-            <button
-              className={s.eyeIcon}
-              type="button"
-              onClick={() => setShowPassword((prev) => !prev)}
-            >
-              {showPassword ? <EyeOnIcon /> : <EyeOffIcon />}
-            </button>
+            <PasswordToggle
+              show={showPassword}
+              toggle={() => setShowPassword((prev) => !prev)}
+            />
             <ErrorMessage message={errors.password?.message} />
           </div>
         </div>
