@@ -4,6 +4,7 @@
         height: 489px;
         background: #fbfbfb;
         padding: 64px;
+        position: relative;
 }
 
 .title{font-weight: 500;
@@ -30,7 +31,7 @@
         display: flex;
         flex-direction: column;
         gap: 1px;
-        position: relative
+        position: relative;
     }
 
 .input {
@@ -57,4 +58,18 @@
     line-height: 1.25;
     letter-spacing: -0.01em;
     color: #fbfbfb;
+}
+
+.xIcon{
+position: absolute;
+top: 28px;
+right: 28px;
+}
+
+.eyeIcon {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    width: 20px;
+    height: 20px;
 }

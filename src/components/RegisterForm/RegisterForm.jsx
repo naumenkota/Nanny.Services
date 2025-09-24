@@ -6,6 +6,10 @@ import { auth, database } from "../../services/firebase.js";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, set } from "firebase/database";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
+import XIcon from "../../assets/x.svg?react";
+import EyeOnIcon from "../../assets/eyeon.svg?react";
+import EyeOffIcon from "../../assets/eyeoff.svg?react";
+import { useState } from "react";
 
 const RegisterFormSchema = yup.object().shape({
   name: yup
@@ -20,6 +24,8 @@ const RegisterFormSchema = yup.object().shape({
 });
 
 export default function RegisterForm() {
+  const [showPassword, setShowPassword] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -50,6 +56,7 @@ export default function RegisterForm() {
 
   return (
     <div className={s.wrapper}>
+      <XIcon className={s.xIcon} />
       <h2 className={s.title}>Registration</h2>
       <p className={s.text}>
         Thank you for your interest in our platform! In order to register, we
@@ -77,9 +84,16 @@ export default function RegisterForm() {
             <input
               {...register("password")}
               placeholder="Password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               className={s.input}
             />
+            <button
+              className={s.eyeIcon}
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+            >
+              {showPassword ? <EyeOnIcon /> : <EyeOffIcon />}
+            </button>
             <ErrorMessage message={errors.password?.message} />
           </div>
         </div>

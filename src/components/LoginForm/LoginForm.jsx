@@ -5,16 +5,21 @@ import * as yup from "yup";
 import { auth } from "../../services/firebase.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
+import XIcon from "../../assets/x.svg?react";
+import EyeOnIcon from "../../assets/eyeon.svg?react";
+import EyeOffIcon from "../../assets/eyeoff.svg?react";
+import { useState } from "react";
+
+const LoginFormSchema = yup.object().shape({
+  email: yup.string().email("Invalid email").required("Email is required"),
+  password: yup
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
+});
 
 export default function LoginForm() {
-  const LoginFormSchema = yup.object().shape({
-    email: yup.string().email("Invalid email").required("Email is required"),
-    password: yup
-      .string()
-      .min(6, "Password must be at least 6 characters")
-      .required("Password is required"),
-  });
-
+  const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -40,6 +45,7 @@ export default function LoginForm() {
 
   return (
     <div className={s.wrapper}>
+      <XIcon className={s.xIcon} />
       <h2 className={s.title}>Log In</h2>
       <p className={s.text}>
         Welcome back! Please enter your credentials to access your account and
@@ -59,9 +65,16 @@ export default function LoginForm() {
             <input
               {...register("password")}
               placeholder="Password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               className={s.input}
             />
+            <button
+              className={s.eyeIcon}
+              type="button"
+              onClick={() => setShowPassword((prev) => !prev)}
+            >
+              {showPassword ? <EyeOnIcon /> : <EyeOffIcon />}
+            </button>
             <ErrorMessage message={errors.password?.message} />
           </div>
         </div>
