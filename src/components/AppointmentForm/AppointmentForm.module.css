@@ -1,0 +1,148 @@
+
+.wrapper{
+    border-radius: 30px;
+    width: 599px;
+     height: 907px;
+    background: #fbfbfb;
+    padding: 64px;
+    position: relative;
+}
+
+.title{
+    font-weight: 500;
+        font-size: 40px;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: #11101c;
+        margin-bottom: 20px;
+}
+
+.photoWrapper{
+    display: flex;
+  gap: 14px;
+}
+
+.nameInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.text{
+font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    color: rgba(17, 16, 28, 0.5);
+    margin-bottom: 40px;
+}
+
+.photo{
+    border-radius: 15px;
+        width: 44px;
+        height: 44px;
+}
+
+.nanny{
+font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33333;
+    color: #8a8a89;
+}
+
+.name{
+    font-weight: 500;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #11101c;
+}
+.btn{
+    border-radius: 30px;
+    width: 472px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: var(--dark-green);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
+}
+
+.timeOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+.timeModal {
+    width: 150px;
+    height: 180px;
+  
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 20px 69px 0 rgba(0, 0, 0, 0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.timeModal h2 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #11101c;
+    margin-bottom: 16px;
+}
+
+.timeGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    align-items: center;
+    overflow-y: auto;
+    max-height: calc(4 * 23px + 3 * 4px);
+  
+}
+
+
+.timeGrid button {
+    width: 86px;
+    height: 23px;
+    border-radius: 4px;
+    border: none;
+    background: #fff;
+    color: rgba(17, 16, 28, 0.3);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    text-align: center;
+    cursor: pointer;
+    
+    
+      
+    
+}
+
+.timeGrid button:hover {
+    background: #f0f0f0;
+}
+
+
+.timeGrid button.selected {
+    color: #000;
+ 
+}
+   

@@ -1,7 +1,10 @@
 import s from "./Reviews.module.css";
 import RateIcon from "../../assets/rate.svg?react";
+import { useState } from "react";
+import AppointmentForm from "../AppointmentForm/AppointmentForm";
 
-export default function Reviews({ reviews }) {
+export default function Reviews({ reviews, nanny }) {
+  const [showForm, setShowForm] = useState(false);
   return (
     <div className={s.wrapper}>
       <ul className={s.reviewsList}>
@@ -21,10 +24,17 @@ export default function Reviews({ reviews }) {
           </li>
         ))}
       </ul>
-
-      <button type="button" className={s.btn}>
-        Make an appointment
-      </button>
+      {!showForm ? (
+        <button
+          type="button"
+          className={s.btn}
+          onClick={() => setShowForm(true)}
+        >
+          Make an appointment
+        </button>
+      ) : (
+        <AppointmentForm nanny={nanny} />
+      )}
     </div>
   );
 }

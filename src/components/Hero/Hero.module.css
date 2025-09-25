@@ -1,7 +1,7 @@
-.wrapper{
-    padding-top: 163px;
-   
-    
+
+.info{
+    padding: 163px 0;
+    width: 517px;
 }
 
 .title{
@@ -11,7 +11,7 @@
         letter-spacing: -0.03em;
         color: #fbfbfb;
         margin-bottom: 28px;
-        width: 517px;
+        
 }
 
 .text{
@@ -51,7 +51,7 @@
     gap: 16px;
     position: absolute;
     bottom: 50px;
-    right: 50px;
+    right: 82px;
 }
 
 .check{

@@ -11,6 +11,7 @@ import Reviews from "../Reviews/Reviews.jsx";
 
 export default function NannyItem({ nanny }) {
   const [showReviews, setShowReviews] = useState(false);
+
   const handleReadMore = () => {
     setShowReviews(true);
   };
@@ -85,7 +86,7 @@ export default function NannyItem({ nanny }) {
             Read more
           </button>
         ) : (
-          <Reviews reviews={nanny.reviews} />
+          <Reviews reviews={nanny.reviews} nanny={nanny} />
         )}
       </div>
     </div>
