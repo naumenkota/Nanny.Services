@@ -1,9 +1,22 @@
 .home{
-    background: url("../../assets/bg.webp") right center no-repeat,
-    var(--dark-green);
+min-height: 800px;
+position: relative;
+padding-top: 52px;
     
+}
+
+
+.background{
+background: url("../../assets/bg.webp") right center no-repeat,
+        var(--dark-green);
     border-radius: 30px;
-    width: 1376px;
-    height: 736px;
-    position: relative;
+    position: absolute;
+    top: 32px;
+        left: 50%;
+            
+            transform: translateX(-50%);
+        width: 1376px;
+       
+        height: 736px;
+        z-index: 0;
 }
