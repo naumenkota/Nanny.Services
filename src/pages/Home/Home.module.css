@@ -1,0 +1,9 @@
+.home{
+    background: url("../../assets/bg.webp") right center no-repeat,
+    var(--dark-green);
+    
+    border-radius: 30px;
+    width: 1376px;
+    height: 736px;
+    position: relative;
+}

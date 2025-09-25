@@ -15,9 +15,6 @@ export default function Navigation() {
       <NavLink to="/nannies" className={active}>
         Nannies
       </NavLink>
-      <NavLink to="/favorites" className={active}>
-        Favorites
-      </NavLink>
     </nav>
   );
 }

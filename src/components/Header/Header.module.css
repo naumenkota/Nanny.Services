@@ -1,3 +1,50 @@
 .header{
-    background-color: black;
+    background-color: transparent;
+    display: flex;
+    padding: 20px 96px;
+    justify-content: space-between;
+ align-items: center;
+    
+}
+
+.option{
+   display: flex;
+    gap: 92px;
+}
+
+.btns {
+    display: flex;
+    gap: 8px;
+}
+
+.btnLogIn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border: 1px solid rgba(251, 251, 251, 0.4);
+    border-radius: 30px;
+    width: 124px;
+    height: 48px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
+}
+
+.btnReg{
+font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border-radius: 30px;
+    background-color: var(--dark-green);
+    width: 168px;
+    height: 48px;
 }
