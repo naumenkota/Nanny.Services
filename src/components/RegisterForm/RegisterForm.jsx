@@ -6,7 +6,7 @@ import { auth, database } from "../../services/firebase.js";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ref, set } from "firebase/database";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
-import XIcon from "../../assets/x.svg?react";
+import CloseButton from "../CloseButton/CloseButton.jsx";
 import { useState } from "react";
 import PasswordToggle from "../PasswordToggle/PasswordToggle.jsx";
 
@@ -22,7 +22,7 @@ const RegisterFormSchema = yup.object().shape({
     .required("Password is required"),
 });
 
-export default function RegisterForm() {
+export default function RegisterForm({ onClose }) {
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -55,7 +55,8 @@ export default function RegisterForm() {
 
   return (
     <div className={s.wrapper}>
-      <XIcon className={s.xIcon} />
+      <CloseButton onClose={onClose} />
+
       <h2 className={s.title}>Registration</h2>
       <p className={s.text}>
         Thank you for your interest in our platform! In order to register, we

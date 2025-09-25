@@ -27,11 +27,11 @@ export default function Header() {
       </div>
 
       <Modal isOpen={loginOpen} onClose={() => setLoginOpen(false)}>
-        <LoginForm />
+        <LoginForm onClose={() => setLoginOpen(false)} />
       </Modal>
 
       <Modal isOpen={registerOpen} onClose={() => setRegisterOpen(false)}>
-        <RegisterForm />
+        <RegisterForm onClose={() => setRegisterOpen(false)} />
       </Modal>
     </header>
   );

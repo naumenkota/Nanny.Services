@@ -5,7 +5,7 @@ import * as yup from "yup";
 import { auth } from "../../services/firebase.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
-import XIcon from "../../assets/x.svg?react";
+import CloseButton from "../CloseButton/CloseButton.jsx";
 import { useState } from "react";
 import PasswordToggle from "../PasswordToggle/PasswordToggle.jsx";
 
@@ -17,7 +17,7 @@ const LoginFormSchema = yup.object().shape({
     .required("Password is required"),
 });
 
-export default function LoginForm() {
+export default function LoginForm({ onClose }) {
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
@@ -44,7 +44,7 @@ export default function LoginForm() {
 
   return (
     <div className={s.wrapper}>
-      <XIcon className={s.xIcon} />
+      <CloseButton onClose={onClose} />
       <h2 className={s.title}>Log In</h2>
       <p className={s.text}>
         Welcome back! Please enter your credentials to access your account and
