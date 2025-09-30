@@ -4,7 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 import CloseButton from "../CloseButton/CloseButton.jsx";
-import Picker from "../Picker/Picker.jsx";
 
 const AppointmentFormSchema = yup.object().shape({
   name: yup.string().min(2).required(),
@@ -20,7 +19,6 @@ export default function AppointmentForm({ onClose, nanny }) {
     register,
     handleSubmit,
 
-    control,
     formState: { errors },
   } = useForm({
     mode: "onChange",
@@ -69,7 +67,6 @@ export default function AppointmentForm({ onClose, nanny }) {
         />
         <ErrorMessage message={errors.age?.message} />
 
-        <Picker control={control} name="time" />
         <ErrorMessage message={errors.time?.message} />
 
         <input {...register("email")} placeholder="Email" className={s.input} />
