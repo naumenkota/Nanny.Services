@@ -1,0 +1,64 @@
+/* Поле для відкриття пікера */
+.input {
+    width: 150px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    color: #11101c;
+    background: #fff;
+}
+
+/* Оверлей */
+.timeOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Модалка */
+.timeModal {
+    width: 200px;
+    padding: 16px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 20px 69px rgba(0, 0, 0, 0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Заголовок */
+.timeModal h2 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: #11101c;
+    text-align: center;
+}
+
+/* Сама бібліотека TimePicker */
+.timePicker {
+    width: 100% !important;
+    /* розтягнути на ширину модалки */
+    text-align: center;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 4px 8px;
+}
+
+/* При фокусі */
+.timePicker:focus {
+    outline: none;
+    border-color: #11101c;
+}

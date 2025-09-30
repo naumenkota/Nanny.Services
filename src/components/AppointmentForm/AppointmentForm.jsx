@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 import CloseButton from "../CloseButton/CloseButton.jsx";
-import { useState } from "react";
+import Picker from "../Picker/Picker.jsx";
 
 const AppointmentFormSchema = yup.object().shape({
   name: yup.string().min(2).required(),
@@ -16,13 +16,11 @@ const AppointmentFormSchema = yup.object().shape({
 });
 
 export default function AppointmentForm({ onClose, nanny }) {
-  const [isTimeOpen, setIsTimeOpen] = useState(false);
-  const [selectedTime, setSelectedTime] = useState("");
-
   const {
     register,
     handleSubmit,
-    setValue,
+
+    control,
     formState: { errors },
   } = useForm({
     mode: "onChange",
@@ -32,18 +30,6 @@ export default function AppointmentForm({ onClose, nanny }) {
   const onSubmit = (data) => {
     console.log(data);
   };
-
-  const handleTimeSelect = (time) => {
-    setSelectedTime(time);
-    setValue("time", time);
-    setIsTimeOpen(false);
-  };
-
-  const times = [];
-  for (let h = 0; h < 24; h++) {
-    times.push(`${h.toString().padStart(2, "0")}:00`);
-    times.push(`${h.toString().padStart(2, "0")}:30`);
-  }
 
   return (
     <div className={s.wrapper}>
@@ -83,9 +69,7 @@ export default function AppointmentForm({ onClose, nanny }) {
         />
         <ErrorMessage message={errors.age?.message} />
 
-        <div className={s.input} onClick={() => setIsTimeOpen(true)}>
-          {selectedTime || "Select time"}
-        </div>
+        <Picker control={control} name="time" />
         <ErrorMessage message={errors.time?.message} />
 
         <input {...register("email")} placeholder="Email" className={s.input} />
@@ -103,27 +87,6 @@ export default function AppointmentForm({ onClose, nanny }) {
           Send
         </button>
       </form>
-
-      {isTimeOpen && (
-        <div className={s.timeOverlay}>
-          <div className={s.timeModal}>
-            <h2>Meeting time</h2>
-            <div className={s.timeGrid}>
-              {times.map((time) => (
-                <button
-                  key={time}
-                  type="button"
-                  className={selectedTime === time ? s.selected : ""}
-                  onClick={() => handleTimeSelect(time)}
-                >
-                  {time}
-                </button>
-              ))}
-            </div>
-            <CloseButton onClose={() => setIsTimeOpen(false)} />
-          </div>
-        </div>
-      )}
     </div>
   );
 }
