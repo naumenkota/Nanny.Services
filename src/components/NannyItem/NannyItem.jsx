@@ -49,7 +49,7 @@ export default function NannyItem({ nanny }) {
                 </p>
               </div>
 
-              <FavoriteToggle />
+              <FavoriteToggle nanny={nanny} />
             </div>
           </div>
         </div>

@@ -8,7 +8,10 @@ export const fetchNannies = createAsyncThunk(
     const dbRef = ref(database);
     const result = await get(child(dbRef, "nannies"));
     if (result.exists()) {
-      let allData = Object.values(result.val());
+      let allData = Object.values(result.val()).map((nanny, index) => ({
+        ...nanny,
+        uniqueKey: index,
+      }));
 
       if (filters.sortBy) {
         allData.sort((a, b) => {
