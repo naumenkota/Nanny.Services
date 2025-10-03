@@ -5,11 +5,15 @@ import RegisterForm from "./components/RegisterForm/RegisterForm";
 import Nannies from "./pages/Nannies/Nannies";
 import Container from "./components/Container/Container";
 import AppointmentForm from "./components/AppointmentForm/AppointmentForm";
+import FilterBar from "./components/FilterBar/FilterBar";
 
 function App() {
   return (
     <>
-      <Nannies />
+      <Container>
+        <FilterBar />
+        <Nannies />
+      </Container>
 
       <Routes></Routes>
     </>

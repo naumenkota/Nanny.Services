@@ -6,15 +6,18 @@ import { fetchNannies } from "../../redux/api/api.js";
 
 export default function NanniesList() {
   const dispatch = useDispatch();
+  const filters = useSelector((state) => state.filters);
+  console.log(filters);
   const { items, loading, loadingMore, total, error, page, perPage } =
     useSelector((state) => state.nannies);
 
   useEffect(() => {
-    dispatch(fetchNannies());
-  }, [dispatch]);
+    dispatch({ type: "nannies/resetItems" });
+    dispatch(fetchNannies({ page: 1, perPage, filters }));
+  }, [dispatch, perPage, filters]);
 
   const handleLoadMore = () => {
-    dispatch(fetchNannies({ page: page + 1, perPage }));
+    dispatch(fetchNannies({ page: page + 1, perPage, filters }));
   };
 
   if (loading) return <p>Loading...</p>;
@@ -22,17 +25,20 @@ export default function NanniesList() {
 
   return (
     <div>
-      <ul>
-        <li className={s.nannies}>
-          {items.map((nanny, index) => (
-            <NannyItem key={index} nanny={nanny} />
-          ))}
-        </li>
+      <ul className={s.nannies}>
+        {items.map((nanny, index) => (
+          <NannyItem key={index} nanny={nanny} />
+        ))}
       </ul>
 
       {items.length > 0 && items.length < total && !loadingMore && (
         <div className={s.moreWrapper}>
-          <button type="button" loading={true} onClick={handleLoadMore}>
+          <button
+            className={s.btn}
+            type="button"
+            loading={true}
+            onClick={handleLoadMore}
+          >
             Load more
           </button>
         </div>

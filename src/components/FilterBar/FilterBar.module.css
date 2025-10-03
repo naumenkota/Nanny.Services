@@ -1,0 +1,47 @@
+.wrapper{
+    margin-top: 64px;
+    margin-bottom: 21px;
+}
+
+.text {
+    font-weight: 500;
+        font-size: 14px;
+        line-height: 1.28571;
+        color: #8a8a89;
+}
+
+.btn{
+    font-weight: 500;
+        font-size: 18px;
+        line-height: 1.11111;
+        color: #fbfbfb;
+        background-color: var(--dark-green);
+        border-radius: 14px;   
+        width: 226px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 8px;
+
+}
+
+.filters{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px;
+    margin-top: 8px;
+    box-shadow: 0 20px 69px 0 rgba(0, 0, 0, 0.07);
+    background: #fff;
+    border-radius: 14px;
+    width: 226px;
+    height: 244px;
+}
+
+.filter{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.11111;
+    color: rgba(17, 16, 28, 0.3);
+}

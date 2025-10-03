@@ -12,7 +12,13 @@ const nanniesSlice = createSlice({
     perPage: 3,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    resetItems(state) {
+      state.items = [];
+      state.page = 1;
+      state.total = 0;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchNannies.pending, (state, action) => {
