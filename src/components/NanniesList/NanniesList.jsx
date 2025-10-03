@@ -26,9 +26,11 @@ export default function NanniesList() {
   return (
     <div>
       <ul className={s.nannies}>
-        {items.map((nanny, index) => (
-          <NannyItem key={index} nanny={nanny} />
-        ))}
+        {items.length === 0 ? (
+          <p className={s.notFound}>No nannies found</p>
+        ) : (
+          items.map((nanny, index) => <NannyItem key={index} nanny={nanny} />)
+        )}
       </ul>
 
       {items.length > 0 && items.length < total && !loadingMore && (

@@ -6,6 +6,7 @@ import {
   resetFilters,
   setPriceFilter,
 } from "../../redux/filter/filterSlice.js";
+import DownArrowIcon from "../../assets/chevron-down.svg?react";
 
 const options = [
   { label: "A to Z", sortBy: "name", sortOrder: "asc" },
@@ -45,13 +46,16 @@ export default function FilterBar() {
         onClick={() => setOpen((prev) => !prev)}
       >
         {selected}
+        <DownArrowIcon />
       </button>
 
       {open && (
         <ul className={s.filters}>
           {options.map((option) => (
             <li
-              className={s.filter}
+              className={`${s.filter} ${
+                selected === option.label ? s.selected : ""
+              }`}
               key={option.label}
               onClick={() => handleSelect(option)}
             >

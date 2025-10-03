@@ -27,3 +27,11 @@
     display: flex;
     justify-content: center;
 }
+
+.notFound{
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.1;
+    color:var(--dark-green);
+}
