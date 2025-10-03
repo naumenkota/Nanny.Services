@@ -7,10 +7,26 @@ display: flex;
 }
 
 .navLink{
+    position: relative;
 font-weight: 400;
     font-size: 16px;
     line-height: 1.25;
     letter-spacing: -0.01em;
     color: #fbfbfb;
+    padding-bottom: 12px;
+    
 }
 
+.navLink.active::after {
+    
+    content: "";
+    position: absolute;
+   
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: white;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
