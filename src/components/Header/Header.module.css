@@ -1,10 +1,26 @@
 .header{
-    background-color: transparent;
-    display: flex;
+display: flex;
     
-    justify-content: space-between;
+justify-content: space-between;
  align-items: center;
+    height: 88px;
     
+    z-index: 10;
+}
+
+.hero {
+    padding: 20px 96px; 
+    max-width: 1376px;
+    background-color: transparent;
+    position: absolute;
+    width: 100%;
+    top: 32px;
+    left: 0;
+}
+
+.green{
+    background-color: var(--dark-green);
+   
 }
 
 .option{
@@ -16,6 +32,51 @@
     display: flex;
     gap: 8px;
 }
+
+.user{
+display: flex;
+justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-right: 24px;
+    
+    max-height: 40px;
+}
+
+.userIcon{
+ width: 40px;
+ height: 40px;
+background-color: #fbfbfb;
+display: flex;
+
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+
+}
+.name{
+    font-weight: 500;
+        font-size: 18px;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        color: #fbfbfb;
+}
+
+.btnLogOut{
+    border: 1px solid rgba(251, 251, 251, 0.4);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 134px;
+    height: 48px;
+    font-weight: 500;
+        font-size: 16px;
+        line-height: 1.25;
+        letter-spacing: -0.01em;
+        color: #fbfbfb;
+}
+
 
 .btnLogIn{
     display: flex;

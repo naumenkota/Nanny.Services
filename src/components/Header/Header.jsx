@@ -5,24 +5,59 @@ import Navigation from "../Navigation/Navigation";
 import { useState } from "react";
 import Modal from "../Modal/Modal";
 import LoginForm from "../LoginForm/LoginForm";
-import RegisterForm from "../RegisterForm/RegisterForm";
+import RegisterForm from "../RegisterForm/RegisterForm.jsx";
+import { useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../redux/auth/authSlice.js";
+import { signOut } from "firebase/auth";
+import { auth } from "../../services/firebase.js";
+import UserIcon from "../../assets/user.svg?react";
 
 export default function Header() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
   const [loginOpen, setLoginOpen] = useState(false);
   const [registerOpen, setRegisterOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    dispatch(logout());
+  };
 
   return (
-    <header className={s.header}>
+    <header className={`${s.header} ${isHome ? s.hero : s.green}`}>
       <img src={logo} alt="Logo" />
       <div className={s.option}>
         <Navigation />
         <div className={s.btns}>
-          <button className={s.btnLogIn} onClick={() => setLoginOpen(true)}>
-            Log In
-          </button>
-          <button className={s.btnReg} onClick={() => setRegisterOpen(true)}>
-            Register
-          </button>
+          {user ? (
+            <>
+              <div className={s.user}>
+                <div className={s.userIcon}>
+                  <UserIcon />
+                </div>
+
+                <p className={s.name}>{user.name}</p>
+              </div>
+              <button className={s.btnLogOut} onClick={handleLogout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <button className={s.btnLogIn} onClick={() => setLoginOpen(true)}>
+                Log In
+              </button>
+              <button
+                className={s.btnReg}
+                onClick={() => setRegisterOpen(true)}
+              >
+                Registration
+              </button>
+            </>
+          )}
         </div>
       </div>
 

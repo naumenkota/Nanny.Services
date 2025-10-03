@@ -2,12 +2,15 @@ import s from "./LoginForm.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { auth } from "../../services/firebase.js";
+import { auth, database } from "../../services/firebase.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 import CloseButton from "../CloseButton/CloseButton.jsx";
 import { useState } from "react";
 import PasswordToggle from "../PasswordToggle/PasswordToggle.jsx";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/auth/authSlice.js";
+import { ref, child, get } from "firebase/database";
 
 const LoginFormSchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -18,6 +21,7 @@ const LoginFormSchema = yup.object().shape({
 });
 
 export default function LoginForm({ onClose }) {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
@@ -36,7 +40,17 @@ export default function LoginForm({ onClose }) {
         data.email,
         data.password
       );
-      console.log("User logged in:", userCredential.user);
+      const user = userCredential.user;
+      const result = await get(child(ref(database), "users"));
+      const users = result.val();
+      const userFromDB = Object.values(users).find(
+        (u) => u.email === data.email
+      );
+
+      dispatch(setUser(userFromDB));
+
+      onClose();
+      console.log("User logged in and saved", user);
     } catch (error) {
       console.error("Login error:", error.code, error.message);
     }

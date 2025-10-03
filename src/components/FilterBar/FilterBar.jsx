@@ -19,8 +19,6 @@ const options = [
 ];
 
 export default function FilterBar() {
-  console.log("Selected option:", options);
-
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState("A to Z");
   const dispatch = useDispatch();
@@ -28,11 +26,17 @@ export default function FilterBar() {
   const handleSelect = (option) => {
     setSelected(option.label);
     setOpen(false);
+
     if (option.sortBy) {
       dispatch(setSort({ sortBy: option.sortBy, sortOrder: option.sortOrder }));
-    } else if (option.priceFilter) {
+      dispatch(setPriceFilter(null));
+    }
+
+    if (option.priceFilter) {
       dispatch(setPriceFilter(option.priceFilter));
-    } else {
+    }
+
+    if (option.label === "Show all") {
       dispatch(resetFilters());
     }
   };

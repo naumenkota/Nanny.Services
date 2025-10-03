@@ -6,13 +6,17 @@ import Nannies from "./pages/Nannies/Nannies";
 import Container from "./components/Container/Container";
 import AppointmentForm from "./components/AppointmentForm/AppointmentForm";
 import FilterBar from "./components/FilterBar/FilterBar";
+import Header from "./components/Header/Header";
 
 function App() {
   return (
     <>
       <Container>
-        <FilterBar />
-        <Nannies />
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/nannies" element={<Nannies />} />
+        </Routes>
       </Container>
 
       <Routes></Routes>
