@@ -9,6 +9,8 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 import CloseButton from "../CloseButton/CloseButton.jsx";
 import { useState } from "react";
 import PasswordToggle from "../PasswordToggle/PasswordToggle.jsx";
+import { useDispatch } from "react-redux";
+import { closeRegister } from "../../redux/modal/modalSlice.js";
 
 const RegisterFormSchema = yup.object().shape({
   name: yup
@@ -22,7 +24,12 @@ const RegisterFormSchema = yup.object().shape({
     .required("Password is required"),
 });
 
-export default function RegisterForm({ onClose }) {
+export default function RegisterForm() {
+  const dispatch = useDispatch();
+
+  const handleClose = () => {
+    dispatch(closeRegister());
+  };
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -55,7 +62,7 @@ export default function RegisterForm({ onClose }) {
 
   return (
     <div className={s.wrapper}>
-      <CloseButton onClose={onClose} />
+      <CloseButton onClose={handleClose} />
 
       <h2 className={s.title}>Registration</h2>
       <p className={s.text}>

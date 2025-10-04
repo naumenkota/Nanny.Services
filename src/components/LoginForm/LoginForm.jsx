@@ -11,6 +11,7 @@ import PasswordToggle from "../PasswordToggle/PasswordToggle.jsx";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/auth/authSlice.js";
 import { ref, child, get } from "firebase/database";
+import { closeLogin } from "../../redux/modal/modalSlice.js";
 
 const LoginFormSchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
@@ -20,8 +21,13 @@ const LoginFormSchema = yup.object().shape({
     .required("Password is required"),
 });
 
-export default function LoginForm({ onClose }) {
+export default function LoginForm() {
   const dispatch = useDispatch();
+
+  const handleClose = () => {
+    dispatch(closeLogin());
+  };
+
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
@@ -48,8 +54,8 @@ export default function LoginForm({ onClose }) {
       );
 
       dispatch(setUser(userFromDB));
+      dispatch(closeLogin());
 
-      onClose();
       console.log("User logged in and saved", user);
     } catch (error) {
       console.error("Login error:", error.code, error.message);
@@ -58,7 +64,7 @@ export default function LoginForm({ onClose }) {
 
   return (
     <div className={s.wrapper}>
-      <CloseButton onClose={onClose} />
+      <CloseButton onClose={handleClose} />
       <h2 className={s.title}>Log In</h2>
       <p className={s.text}>
         Welcome back! Please enter your credentials to access your account and

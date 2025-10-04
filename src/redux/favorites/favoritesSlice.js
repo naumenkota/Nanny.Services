@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const localFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
 const initialState = {
-  items: [],
+  items: localFavorites,
 };
 
 const favoritesSlice = createSlice({
@@ -13,11 +14,13 @@ const favoritesSlice = createSlice({
 
       if (!state.items.find((item) => item.uniqueKey === nanny.uniqueKey)) {
         state.items.push(nanny);
+        localStorage.setItem("favorites", JSON.stringify(state.items));
       }
     },
     removeFavorite(state, action) {
       const uniqueKey = action.payload;
       state.items = state.items.filter((item) => item.uniqueKey !== uniqueKey);
+      localStorage.setItem("favorites", JSON.stringify(state.items));
     },
     toggleFavorite(state, action) {
       const nanny = action.payload;
@@ -31,9 +34,11 @@ const favoritesSlice = createSlice({
       } else {
         state.items.push(nanny);
       }
+      localStorage.setItem("favorites", JSON.stringify(state.items));
     },
     clearFavorites(state) {
       state.items = [];
+      localStorage.removeItem("favorites");
     },
   },
 });

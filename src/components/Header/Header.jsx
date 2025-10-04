@@ -2,7 +2,6 @@ import logo from "../../assets/logo/logo.svg";
 import s from "./Header.module.css";
 import { Link } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
-import { useState } from "react";
 import Modal from "../Modal/Modal";
 import LoginForm from "../LoginForm/LoginForm";
 import RegisterForm from "../RegisterForm/RegisterForm.jsx";
@@ -12,12 +11,17 @@ import { logout } from "../../redux/auth/authSlice.js";
 import { signOut } from "firebase/auth";
 import { auth } from "../../services/firebase.js";
 import UserIcon from "../../assets/user.svg?react";
+import {
+  closeRegister,
+  closeLogin,
+  openRegister,
+  openLogin,
+} from "../../redux/modal/modalSlice.js";
 
 export default function Header() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-  const [loginOpen, setLoginOpen] = useState(false);
-  const [registerOpen, setRegisterOpen] = useState(false);
+  const { registerOpen, loginOpen } = useSelector((state) => state.modal);
   const location = useLocation();
   const isHome = location.pathname === "/";
 
@@ -47,12 +51,15 @@ export default function Header() {
             </>
           ) : (
             <>
-              <button className={s.btnLogIn} onClick={() => setLoginOpen(true)}>
+              <button
+                className={s.btnLogIn}
+                onClick={() => dispatch(openLogin())}
+              >
                 Log In
               </button>
               <button
                 className={s.btnReg}
-                onClick={() => setRegisterOpen(true)}
+                onClick={() => dispatch(openRegister())}
               >
                 Registration
               </button>
@@ -61,12 +68,12 @@ export default function Header() {
         </div>
       </div>
 
-      <Modal isOpen={loginOpen} onClose={() => setLoginOpen(false)}>
-        <LoginForm onClose={() => setLoginOpen(false)} />
+      <Modal isOpen={loginOpen} onClose={() => dispatch(closeLogin())}>
+        <LoginForm />
       </Modal>
 
-      <Modal isOpen={registerOpen} onClose={() => setRegisterOpen(false)}>
-        <RegisterForm onClose={() => setRegisterOpen(false)} />
+      <Modal isOpen={registerOpen} onClose={() => dispatch(closeRegister())}>
+        <RegisterForm />
       </Modal>
     </header>
   );

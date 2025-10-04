@@ -3,6 +3,7 @@ import { nanniesReducer } from "./nannies/nanniesSlice";
 import { filtersReducer } from "./filter/filterSlice";
 import { authReducer } from "./auth/authSlice";
 import { favoritesReducer } from "./favorites/favoritesSlice";
+import { modalReducer } from "./modal/modalSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     filters: filtersReducer,
     auth: authReducer,
     favorites: favoritesReducer,
+    modal: modalReducer,
   },
 });
