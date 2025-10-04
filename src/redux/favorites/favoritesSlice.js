@@ -1,8 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { logout, setUser } from "../auth/authSlice.js";
 
-const localFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+const getLocalFavorites = (uid) => {
+  if (!uid) return [];
+  return JSON.parse(localStorage.getItem(`favorites_${uid}`)) || [];
+};
+
+const saveLocalFavorites = (uid, items) => {
+  if (!uid) return;
+  localStorage.setItem(`favorites_${uid}`, JSON.stringify(items));
+};
+
 const initialState = {
-  items: localFavorites,
+  items: [],
 };
 
 const favoritesSlice = createSlice({
@@ -10,40 +20,74 @@ const favoritesSlice = createSlice({
   initialState,
   reducers: {
     addFavorite(state, action) {
-      const nanny = action.payload;
+      const { nanny, uid } = action.payload;
+      if (!uid) return;
 
       if (!state.items.find((item) => item.uniqueKey === nanny.uniqueKey)) {
         state.items.push(nanny);
-        localStorage.setItem("favorites", JSON.stringify(state.items));
+        saveLocalFavorites(uid, state.items);
+        console.log("Added favorite for UID:", uid, state.items);
       }
     },
     removeFavorite(state, action) {
-      const uniqueKey = action.payload;
+      const { uniqueKey, uid } = action.payload;
+      if (!uid) return;
+
       state.items = state.items.filter((item) => item.uniqueKey !== uniqueKey);
-      localStorage.setItem("favorites", JSON.stringify(state.items));
+      saveLocalFavorites(uid, state.items);
+      console.log("Removed favorite for UID:", uid, state.items);
     },
     toggleFavorite(state, action) {
-      const nanny = action.payload;
+      const { nanny, uid } = action.payload;
+      if (!uid) return;
+
       const exists = state.items.find(
         (item) => item.uniqueKey === nanny.uniqueKey
       );
+
       if (exists) {
         state.items = state.items.filter(
           (item) => item.uniqueKey !== nanny.uniqueKey
         );
+        console.log("Toggled OFF favorite for UID:", uid, state.items);
       } else {
         state.items.push(nanny);
+        console.log("Toggled ON favorite for UID:", uid, state.items);
       }
-      localStorage.setItem("favorites", JSON.stringify(state.items));
+
+      saveLocalFavorites(uid, state.items);
     },
-    clearFavorites(state) {
+    clearFavorites(state, action) {
       state.items = [];
-      localStorage.removeItem("favorites");
+      if (action.payload?.uid) {
+        localStorage.removeItem(`favorites_${action.payload.uid}`);
+      }
+    },
+    setFavorites(state, action) {
+      state.items = action.payload || [];
+      console.log("Set favorites from storage:", state.items);
     },
   },
 });
 
-export const { addFavorite, removeFavorite, toggleFavorite, clearFavorites } =
-  favoritesSlice.actions;
+export const handleAuthActions = (action, dispatch) => {
+  if (action.type === logout.type) {
+    dispatch(favoritesSlice.actions.clearFavorites({}));
+  }
+
+  if (action.type === setUser.type && action.payload) {
+    const stored = getLocalFavorites(action.payload.uid);
+    console.log("Loading favorites for UID:", action.payload.uid, stored);
+    dispatch(favoritesSlice.actions.setFavorites(stored));
+  }
+};
+
+export const {
+  addFavorite,
+  removeFavorite,
+  toggleFavorite,
+  clearFavorites,
+  setFavorites,
+} = favoritesSlice.actions;
 
 export const favoritesReducer = favoritesSlice.reducer;

@@ -13,12 +13,17 @@ import { setUser, logout, setLoading } from "./redux/auth/authSlice.js";
 import { ref, get, child } from "firebase/database";
 import Favorites from "./pages/Favorites/Favorites.jsx";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
+import {
+  handleAuthActions,
+  clearFavorites,
+} from "./redux/favorites/favoritesSlice.js";
 
-function App() {
+export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setLoading(true));
+
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         const snapshot = await get(child(ref(database), "users"));
@@ -27,42 +32,42 @@ function App() {
           (u) => u.email === user.email
         );
 
-        dispatch(
-          setUser(
-            userFromDB || {
-              email: user.email,
-              name: user.displayName || "",
-              uid: user.uid,
-            }
-          )
-        );
+        const finalUser = {
+          ...(userFromDB || {}),
+          email: user.email,
+          name: userFromDB?.name || user.displayName || "",
+          uid: user.uid,
+        };
+
+        dispatch(setUser(finalUser));
+
+        handleAuthActions({ type: setUser.type, payload: finalUser }, dispatch);
       } else {
+        clearFavorites({ uid: undefined })(dispatch);
         dispatch(logout());
       }
+
+      dispatch(setLoading(false));
     });
 
     return () => unsubscribe();
   }, [dispatch]);
 
   return (
-    <>
-      <Container>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/nannies" element={<Nannies />} />
-          <Route
-            path="/favorites"
-            element={
-              <PrivateRoute>
-                <Favorites />
-              </PrivateRoute>
-            }
-          />
-        </Routes>
-      </Container>
-    </>
+    <Container>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/nannies" element={<Nannies />} />
+        <Route
+          path="/favorites"
+          element={
+            <PrivateRoute>
+              <Favorites />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
+    </Container>
   );
 }
-
-export default App;

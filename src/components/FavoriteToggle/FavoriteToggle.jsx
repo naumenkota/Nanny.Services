@@ -10,18 +10,23 @@ import RegisterForm from "../RegisterForm/RegisterForm";
 export default function FavoriteToggle({ nanny }) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
+  const isLoading = useSelector((state) => state.auth.isLoading);
   const favorites = useSelector((state) => state.favorites.items);
   const [registerOpen, setRegisterOpen] = useState(false);
+  console.log("FavoriteToggle user:", user, "isLoading:", isLoading);
   const isFavorite = favorites.some(
     (item) => item.uniqueKey === nanny.uniqueKey
   );
+
   const handleToggle = () => {
-    if (!user) {
+    if (isLoading) return;
+
+    if (!user?.uid) {
       setRegisterOpen(true);
       return;
     }
-
-    dispatch(toggleFavorite(nanny));
+    console.log("FavoriteToggle user:", user, "isLoading:", isLoading);
+    dispatch(toggleFavorite({ nanny, uid: user.uid }));
   };
 
   return (
