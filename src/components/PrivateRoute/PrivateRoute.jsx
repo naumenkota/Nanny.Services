@@ -1,16 +1,16 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { openRegister } from "../redux/modalSlice.js";
-import { useDispatch } from "react-redux";
 
-export default function PrivateRoute({ component: Component }) {
-  const user = useSelector((state) => state.auth.user);
-  const dispatch = useDispatch();
+export default function PrivateRoute({ children, redirectTo = "/" }) {
+  const { user, isLoggedIn, isLoading } = useSelector((state) => state.auth);
 
-  if (!user) {
-    dispatch(openRegister());
-    return null;
+  if (isLoading) return null;
+  console.log("PrivateRoute check:", { user, isLoggedIn });
+
+  if (!user || !isLoggedIn) {
+    console.log("Redirecting to", redirectTo);
+    return <Navigate to={redirectTo} replace />;
   }
 
-  return <Component />;
+  return children;
 }

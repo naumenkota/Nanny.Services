@@ -40,6 +40,7 @@ export default function LoginForm() {
 
   const onSubmit = async (data) => {
     console.log("Logging in with:", data);
+
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -47,16 +48,28 @@ export default function LoginForm() {
         data.password
       );
       const user = userCredential.user;
+      console.log(user.uid);
+
       const result = await get(child(ref(database), "users"));
       const users = result.val();
       const userFromDB = Object.values(users).find(
         (u) => u.email === data.email
       );
 
-      dispatch(setUser(userFromDB));
-      dispatch(closeLogin());
+      if (userFromDB) {
+        dispatch(
+          setUser({
+            uid: user.uid,
+            name: userFromDB.name,
+            email: userFromDB.email,
+          })
+        );
+        dispatch(closeLogin());
 
-      console.log("User logged in and saved", user);
+        console.log("User logged in and saved", user);
+      } else {
+        console.error("User not found in database");
+      }
     } catch (error) {
       console.error("Login error:", error.code, error.message);
     }

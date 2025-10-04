@@ -9,14 +9,16 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { auth, database } from "./services/firebase.js";
-import { setUser, logout } from "./redux/auth/authSlice.js";
+import { setUser, logout, setLoading } from "./redux/auth/authSlice.js";
 import { ref, get, child } from "firebase/database";
 import Favorites from "./pages/Favorites/Favorites.jsx";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(setLoading(true));
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         const snapshot = await get(child(ref(database), "users"));
@@ -49,11 +51,16 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/nannies" element={<Nannies />} />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route
+            path="/favorites"
+            element={
+              <PrivateRoute>
+                <Favorites />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </Container>
-
-      
     </>
   );
 }
