@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import s from "./TimePicker.module.css";
+import ClockIcon from "../../assets/clock.svg?react";
 
 export default function TimePicker({ value, onChange }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,21 +38,25 @@ export default function TimePicker({ value, onChange }) {
     <div className={s.dropdown} ref={dropdownRef}>
       <div className={s.input} onClick={() => setIsOpen((prev) => !prev)}>
         {value || "00:00"}
-        <span className={s.icon}>⌄</span>
+
+        <ClockIcon />
       </div>
 
       {isOpen && (
-        <ul className={s.menu}>
-          {times.map((time) => (
-            <li
-              key={time}
-              onClick={() => handleSelect(time)}
-              className={`${s.option} ${time === value ? s.selected : ""}`}
-            >
-              {time}
-            </li>
-          ))}
-        </ul>
+        <div className={s.optionWrapper}>
+          <p className={s.text}>Meeting time</p>
+          <ul className={s.menu}>
+            {times.map((time) => (
+              <li
+                key={time}
+                onClick={() => handleSelect(time)}
+                className={`${s.option} ${time === value ? s.selected : ""}`}
+              >
+                {time.replace(":", " : ")}
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );

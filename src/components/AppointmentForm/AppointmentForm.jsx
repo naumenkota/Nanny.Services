@@ -5,7 +5,6 @@ import * as yup from "yup";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 import CloseButton from "../CloseButton/CloseButton.jsx";
 import TimePicker from "../TimePicker/TimePicker.jsx";
-import { useState } from "react";
 
 const AppointmentFormSchema = yup.object().shape({
   name: yup.string().min(2).required(),
@@ -17,8 +16,6 @@ const AppointmentFormSchema = yup.object().shape({
 });
 
 export default function AppointmentForm({ onClose, nanny }) {
-  const [selectedTime, setSelectedTime] = useState("");
-
   const {
     register,
     handleSubmit,
@@ -54,43 +51,61 @@ export default function AppointmentForm({ onClose, nanny }) {
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          {...register("address")}
-          placeholder="Address"
-          className={s.input}
-        />
-        <ErrorMessage message={errors.address?.message} />
+        <div className={s.smallInputs}>
+          <input
+            {...register("address")}
+            placeholder="Address"
+            className={s.smallInput}
+          />
+          <ErrorMessage message={errors.address?.message} />
 
-        <input {...register("tel")} placeholder="+380" className={s.input} />
-        <ErrorMessage message={errors.tel?.message} />
+          <input
+            {...register("tel")}
+            placeholder="+380"
+            className={s.smallInput}
+          />
+          <ErrorMessage message={errors.tel?.message} />
 
-        <input
-          {...register("age")}
-          placeholder="Child's age"
-          className={s.input}
-        />
-        <ErrorMessage message={errors.age?.message} />
+          <input
+            {...register("age")}
+            placeholder="Child's age"
+            className={s.smallInput}
+          />
+          <ErrorMessage message={errors.age?.message} />
 
-        <Controller
-          name="time"
-          control={control}
-          render={({ field }) => (
-            <TimePicker value={field.value} onChange={field.onChange} />
-          )}
-        />
-        <ErrorMessage message={errors.time?.message} />
+          <div className={s.inputWrapper}>
+            <Controller
+              name="time"
+              control={control}
+              render={({ field }) => (
+                <TimePicker value={field.value} onChange={field.onChange} />
+              )}
+            />
+            <ErrorMessage message={errors.time?.message} />
+          </div>
+        </div>
 
-        <input {...register("email")} placeholder="Email" className={s.input} />
-        <ErrorMessage message={errors.email?.message} />
+        <div className={s.bigInputs}>
+          <input
+            {...register("email")}
+            placeholder="Email"
+            className={s.bigInput}
+          />
+          <ErrorMessage message={errors.email?.message} />
 
-        <input
-          {...register("name")}
-          placeholder="Father's or mother's name"
-          className={s.input}
-        />
-        <ErrorMessage message={errors.name?.message} />
+          <input
+            {...register("name")}
+            placeholder="Father's or mother's name"
+            className={s.bigInput}
+          />
+          <ErrorMessage message={errors.name?.message} />
 
-        <textarea {...register("comment")} placeholder="Comment"></textarea>
+          <textarea
+            {...register("comment")}
+            placeholder="Comment"
+            className={s.textarea}
+          ></textarea>
+        </div>
         <button className={s.btn} type="submit">
           Send
         </button>
