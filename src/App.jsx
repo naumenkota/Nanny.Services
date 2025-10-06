@@ -13,6 +13,7 @@ import { setUser, logout, setLoading } from "./redux/auth/authSlice.js";
 import { ref, get, child } from "firebase/database";
 import Favorites from "./pages/Favorites/Favorites.jsx";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
+import NotFound from "./pages/NotFound/NotFound.jsx";
 import {
   handleAuthActions,
   clearFavorites,
@@ -68,6 +69,7 @@ export default function App() {
               </PrivateRoute>
             }
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>
     </>
