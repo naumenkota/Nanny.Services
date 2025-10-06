@@ -3,9 +3,6 @@ import HeartIcon from "../../assets/heart.svg?react";
 import HeartPressedIcon from "../../assets/heartpressed.svg?react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleFavorite } from "../../redux/favorites/favoritesSlice";
-
-import Modal from "../Modal/Modal";
-import RegisterForm from "../RegisterForm/RegisterForm";
 import { openRegister } from "../../redux/modal/modalSlice.js";
 
 export default function FavoriteToggle({ nanny }) {

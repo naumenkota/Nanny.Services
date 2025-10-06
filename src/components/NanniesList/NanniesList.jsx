@@ -39,12 +39,7 @@ export default function NanniesList() {
 
       {items.length > 0 && items.length < total && !loadingMore && (
         <div className={s.moreWrapper}>
-          <button
-            className={s.btn}
-            type="button"
-            loading={true}
-            onClick={handleLoadMore}
-          >
+          <button className={s.btn} type="button" onClick={handleLoadMore}>
             Load more
           </button>
         </div>

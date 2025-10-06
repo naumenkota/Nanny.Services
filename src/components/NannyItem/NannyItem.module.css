@@ -85,7 +85,7 @@
 }
 
 .span{
-color: #38cd3e;
+    color: #38cd3e;
 }
 
 .toggleWrapper{
@@ -121,7 +121,8 @@ color: #38cd3e;
       
 }
 
-.textGray{ color: rgba(17, 16, 28, 0.5);}
+.textGray{ 
+    color: rgba(17, 16, 28, 0.5);}
 
 .about{
     font-weight: 400;

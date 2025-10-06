@@ -1,7 +1,7 @@
 import s from "./Reviews.module.css";
 import RateIcon from "../../assets/rate.svg?react";
 import { useState } from "react";
-import AppointmentForm from "../AppointmentForm/AppointmentForm";
+import AppointmentForm from "../AppointmentForm/AppointmentForm.jsx";
 import Modal from "../Modal/Modal.jsx";
 
 export default function Reviews({ reviews, nanny }) {

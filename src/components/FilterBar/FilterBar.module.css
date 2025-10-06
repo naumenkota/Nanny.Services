@@ -7,25 +7,25 @@
 
 .text {
     font-weight: 500;
-        font-size: 14px;
-        line-height: 1.28571;
-        color: #8a8a89;
+    font-size: 14px;
+    line-height: 1.28571;
+    color: #8a8a89;
 }
 
 .btn{
     font-weight: 500;
-        font-size: 18px;
-        line-height: 1.11111;
-        color: #fbfbfb;
-        background-color: var(--dark-green);
-        border-radius: 14px;   
-        width: 226px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 14px;
-        margin-top: 8px;
+    font-size: 18px;
+    line-height: 1.11111;
+    color: #fbfbfb;
+    background-color: var(--dark-green);
+    border-radius: 14px;   
+    width: 226px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px;
+    margin-top: 8px;
 
 }
 

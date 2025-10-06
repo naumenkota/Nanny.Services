@@ -22,24 +22,18 @@
 
 .menu {
     position: relative;
-    
-    
     border-radius: 12px;
     overflow-y: auto;
     z-index: 20;
-    max-height: 100px;
-        
-       
+    max-height: 100px;   
     display: flex;
     flex-direction: column;
     justify-content: center;
-     
-        align-items: center;
-
+    align-items: center;
 }
 
 .option {
-   
+
     cursor: pointer;
     font-size: 16px;
     line-height: 1.25;
@@ -66,9 +60,10 @@
     font-size: 16px;
     line-height: 1.5;
     color: #11101c;
-   
 
 }
+
+
 .optionWrapper{
     border-radius: 12px;
     background-color: #fff;

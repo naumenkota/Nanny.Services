@@ -28,7 +28,7 @@
 }
 
 .option{
-   display: flex;
+    display: flex;
     gap: 92px;
 }
 
@@ -38,32 +38,30 @@
 }
 
 .user{
-display: flex;
-justify-content: center;
+    display: flex;
+    justify-content: center;
     align-items: center;
     gap: 14px;
     margin-right: 24px;
-    
     max-height: 40px;
 }
 
 .userIcon{
- width: 40px;
- height: 40px;
-background-color: #fbfbfb;
-display: flex;
-
+    width: 40px;
+    height: 40px;
+    background-color: #fbfbfb;
+    display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 14px;
-
 }
+
 .name{
     font-weight: 500;
-        font-size: 18px;
-        line-height: 1.1;
-        letter-spacing: -0.01em;
-        color: #fbfbfb;
+    font-size: 18px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
 }
 
 .btnLogOut{
@@ -117,7 +115,7 @@ display: flex;
 .btnRegBorder {
     border: 1px solid rgba(251, 251, 251, 0.4);
     border-radius: 30px;
-    
+  
 }
 
 @media (max-width: 1024px) {

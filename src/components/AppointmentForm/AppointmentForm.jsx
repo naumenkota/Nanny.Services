@@ -32,8 +32,8 @@ export default function AppointmentForm({ onClose, nanny }) {
     resolver: yupResolver(AppointmentFormSchema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = () => {
+    alert("Form submitted successfully!");
   };
 
   return (

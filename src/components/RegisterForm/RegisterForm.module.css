@@ -1,23 +1,23 @@
 .wrapper{
-border-radius: 30px;
-width: 565px;
-height: 579px;
-background: #fbfbfb;
-padding: 64px;
-position: relative;
+    border-radius: 30px;
+    width: 565px;
+    height: 579px;
+    background: #fbfbfb;
+    padding: 64px;
+    position: relative;
 
 }
 
 .title{
-font-weight: 500;
+    font-weight: 500;
     font-size: 40px;
     line-height: 1.2;
     letter-spacing: -0.02em;
-margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .text{
-font-weight: 400;
+    font-weight: 400;
     font-size: 16px;
     line-height: 1.25;
     color: rgba(17, 16, 28, 0.5);
@@ -36,22 +36,20 @@ font-weight: 400;
 
 
 .btn{
-  margin-top: 40px;
+    margin-top: 40px;
     border-radius: 30px;
-      
-        width: 438px;
-        height: 52px;
-        background-color: var(--dark-green);
-        display: flex;
-        flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            font-weight: 500;
-                font-size: 16px;
-                line-height: 1.25;
-                letter-spacing: -0.01em;
-                color: #fbfbfb;
-
+    width: 438px;
+    height: 52px;
+    background-color: var(--dark-green);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
 
 }
 

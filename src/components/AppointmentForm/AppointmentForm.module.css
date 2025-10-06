@@ -10,16 +10,16 @@
 
 .title{
     font-weight: 500;
-        font-size: 40px;
-        line-height: 1.2;
-        letter-spacing: -0.02em;
-        color: #11101c;
-        margin-bottom: 20px;
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #11101c;
+    margin-bottom: 20px;
 }
 
 .photoWrapper{
     display: flex;
-  gap: 14px;
+    gap: 14px;
 }
 
 .nameInfo{
@@ -27,8 +27,9 @@
     flex-direction: column;
     gap: 4px;
 }
+
 .text{
-font-weight: 400;
+    font-weight: 400;
     font-size: 16px;
     line-height: 1.25;
     color: rgba(17, 16, 28, 0.5);
@@ -37,12 +38,12 @@ font-weight: 400;
 
 .photo{
     border-radius: 15px;
-        width: 44px;
-        height: 44px;
+    width: 44px;
+    height: 44px;
 }
 
 .nanny{
-font-weight: 500;
+    font-weight: 500;
     font-size: 12px;
     line-height: 1.33333;
     color: #8a8a89;
@@ -50,10 +51,11 @@ font-weight: 500;
 
 .name{
     font-weight: 500;
-        font-size: 16px;
-        line-height: 1.5;
-        color: #11101c;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #11101c;
 }
+
 .btn{
     border-radius: 30px;
     width: 472px;
@@ -73,42 +75,40 @@ font-weight: 500;
 
 .smallInputs{
     margin-top: 40px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 8px;
 }
-
+    
 .bigInputs{
-display: flex;
-flex-direction: column;
-gap: 16px;
-margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
 }
 
 .smallInput{
     font-weight: 400;
-        font-size: 16px;
-        line-height: 1.25;
-        color: #11101c;
-        padding: 16px 18px;
-        border: 1px solid rgba(17, 16, 28, 0.1);
-        border-radius: 12px;
-         width: 232px;
-        height: 52px;
-}
-
-.bigInput{
-    
-font-weight: 400;
     font-size: 16px;
     line-height: 1.25;
     color: #11101c;
     padding: 16px 18px;
     border: 1px solid rgba(17, 16, 28, 0.1);
-        border-radius: 12px;
-      
-        width: 472px;
-        height: 52px;
+    border-radius: 12px;
+    width: 232px;
+    height: 52px;
+}
+
+.bigInput{  
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    color: #11101c;
+    padding: 16px 18px;
+    border: 1px solid rgba(17, 16, 28, 0.1);
+    border-radius: 12px;
+    width: 472px;
+    height: 52px;
 
 }
 
@@ -127,25 +127,24 @@ font-weight: 400;
 
 textarea:focus,
 input:focus {
-            outline: none;
-            box-shadow: none;
+    outline: none;
+    box-shadow: none;
            
         }
 
 
-  .inputWrapper { 
+.inputWrapper { 
     display: flex;
-        flex-direction: column;
-        gap: 1px;
-        position: relative
+    flex-direction: column;
+    gap: 1px;
+    position: relative
   }
 
 
 .smallInput::placeholder, 
 .bigInput::placeholder,
 .textarea::placeholder {
-   
-        color: #11101c;
+   color: #11101c;
   }
 
 

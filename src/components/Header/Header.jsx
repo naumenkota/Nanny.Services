@@ -1,9 +1,8 @@
 import logo from "../../assets/logo/logo.svg";
 import s from "./Header.module.css";
-import { Link } from "react-router-dom";
-import Navigation from "../Navigation/Navigation";
-import Modal from "../Modal/Modal";
-import LoginForm from "../LoginForm/LoginForm";
+import Navigation from "../Navigation/Navigation.jsx";
+import Modal from "../Modal/Modal.jsx";
+import LoginForm from "../LoginForm/LoginForm.jsx";
 import RegisterForm from "../RegisterForm/RegisterForm.jsx";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -17,7 +16,7 @@ import {
   openRegister,
   openLogin,
 } from "../../redux/modal/modalSlice.js";
-import Container from "../Container/Container.jsx";
+
 
 export default function Header() {
   const dispatch = useDispatch();
