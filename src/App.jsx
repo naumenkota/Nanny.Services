@@ -44,7 +44,7 @@ export default function App() {
 
         handleAuthActions({ type: setUser.type, payload: finalUser }, dispatch);
       } else {
-        clearFavorites({ uid: undefined })(dispatch);
+        dispatch(clearFavorites());
         dispatch(logout());
       }
 
