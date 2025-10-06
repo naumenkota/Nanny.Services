@@ -55,6 +55,8 @@ export default function RegisterForm() {
         name: data.name,
         email: data.email,
       });
+
+      handleClose();
     } catch (error) {
       console.error("Registration error:", error.message);
     }

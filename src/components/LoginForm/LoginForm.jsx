@@ -53,7 +53,6 @@ export default function LoginForm() {
         password
       );
       const user = userCredential.user;
-      console.log(user.uid);
 
       const result = await get(child(ref(database), "users"));
       const users = result.val();
@@ -68,8 +67,6 @@ export default function LoginForm() {
           })
         );
         dispatch(closeLogin());
-
-        console.log("User logged in and saved", user);
       } else {
         console.error("User not found in database");
       }

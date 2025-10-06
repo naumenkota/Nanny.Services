@@ -26,7 +26,6 @@ const favoritesSlice = createSlice({
       if (!state.items.find((item) => item.uniqueKey === nanny.uniqueKey)) {
         state.items.push(nanny);
         saveLocalFavorites(uid, state.items);
-        console.log("Added favorite for UID:", uid, state.items);
       }
     },
     removeFavorite(state, action) {
@@ -35,7 +34,6 @@ const favoritesSlice = createSlice({
 
       state.items = state.items.filter((item) => item.uniqueKey !== uniqueKey);
       saveLocalFavorites(uid, state.items);
-      console.log("Removed favorite for UID:", uid, state.items);
     },
     toggleFavorite(state, action) {
       const { nanny, uid } = action.payload;
@@ -49,10 +47,8 @@ const favoritesSlice = createSlice({
         state.items = state.items.filter(
           (item) => item.uniqueKey !== nanny.uniqueKey
         );
-        console.log("Toggled OFF favorite for UID:", uid, state.items);
       } else {
         state.items.push(nanny);
-        console.log("Toggled ON favorite for UID:", uid, state.items);
       }
 
       saveLocalFavorites(uid, state.items);
@@ -65,7 +61,6 @@ const favoritesSlice = createSlice({
     },
     setFavorites(state, action) {
       state.items = action.payload || [];
-      console.log("Set favorites from storage:", state.items);
     },
   },
 });
@@ -77,7 +72,6 @@ export const handleAuthActions = (action, dispatch) => {
 
   if (action.type === setUser.type && action.payload) {
     const stored = getLocalFavorites(action.payload.uid);
-    console.log("Loading favorites for UID:", action.payload.uid, stored);
     dispatch(favoritesSlice.actions.setFavorites(stored));
   }
 };
