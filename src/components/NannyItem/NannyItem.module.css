@@ -1,6 +1,6 @@
 .nannyItem{
    border-radius: 24px;
-    width: 1184px;
+    max-width: 1184px;
     min-height: 318px;
     background-color: #FBFBFB;
     display: flex;
@@ -17,8 +17,8 @@
 }
 .photo {
     border-radius: 15px;
-    width: 96px;
-    height: 96px; 
+    max-width: 96px;
+    max-height: 96px; 
     object-fit: cover;
 }
 
@@ -140,4 +140,78 @@ color: #38cd3e;
     text-decoration-skip-ink: none;
     color: #11101c;
     align-self: flex-start
+}
+
+
+
+
+@media (max-width: 768px) {
+    .nannyItem {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 16px;
+    }
+
+    .photoWrapper {
+        width: 100px;
+        height: 100px;
+    }
+
+    .photo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .topInfo {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .toggleWrapper {
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .list {
+        justify-content: center;
+    }
+
+    .about {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .readMore {
+        font-size: 14px;
+        align-self: center;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+    .nannyItem {
+        padding: 12px;
+        gap: 16px;
+    }
+
+    .text {
+        font-size: 14px;
+    }
+
+    .name {
+        font-size: 20px;
+    }
+
+    .nanny {
+        font-size: 14px;
+    }
+
+    .item {
+        padding: 6px 12px;
+    }
 }

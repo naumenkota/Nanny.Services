@@ -36,3 +36,21 @@
     line-height: 1.1;
     color:var(--dark-green);
 }
+
+
+@media (max-width: 480px) {
+    .nannies {
+        gap: 24px;
+    }
+
+    .moreWrapper {
+        margin-top: 40px;
+        margin-bottom: 60px;
+    }
+
+    .btn {
+        width: 140px;
+        height: 44px;
+        font-size: 14px;
+    }
+}

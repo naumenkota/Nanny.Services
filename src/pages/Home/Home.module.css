@@ -1,41 +1,42 @@
 .home{
-min-height: 800px;
-position: relative;
-
-z-index: 1;
-flex-wrap: wrap;
+    min-height: 800px;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
     
 }
 
 
+.wrapper {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    min-height: 736px;
+}
+
+
 .background{
-background: url("../../assets/bg.webp") right center no-repeat,
-        var(--dark-green);
+    background: url("../../assets/bg.webp") right center no-repeat,
+    var(--dark-green);
     border-radius: 30px;
     position: absolute;
     top: 32px;
-        left: 50%;
-            
-            transform: translateX(-50%);
-        width: 1376px;
-       
-        height: 736px;
-        z-index: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1376px;
+    min-height: 736px;
+    z-index: 0;
 }
 
 
-.wrapper{
-    max-width: 1440px;
-    margin: 0 auto;
-    position: relative;
-}
 
 .info {
     padding-top: 283px;
     margin-left: 128px;
-   position: absolute;
-    width: 517px;
-    height: 322px;
+    position: absolute;
+    max-width: 517px;
+    max-height: 322px;
     
 }
 
@@ -127,4 +128,63 @@ background: url("../../assets/bg.webp") right center no-repeat,
     top: 132px;
     left: 32px;
     z-index: 2;
+}
+
+
+
+@media (max-width: 768px) {
+    .wrapper {
+        max-width: 768px;
+    }
+
+    .background {
+        background: var(--dark-green);
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+    .info{
+        margin-left: 64px;
+
+    }
+    .title {
+        font-weight: 400;
+        font-size: 50px;
+        color: #fbfbfb;
+        margin-bottom: 24px;
+    }
+    
+    .text {
+        font-weight: 200;
+        font-size: 24px; 
+        color: #fbfbfb;
+        margin-bottom: 32px;
+    }
+
+    .exp{
+        position: relative;   
+        margin: 40px auto 0;
+        width: 90%;
+        z-index: 1;
+        left: 0;
+           
+    }
+    .line{
+        top: 230px;
+        left: 0;     
+    }
+    
+}
+
+
+@media (max-width: 480px) {
+    .info {
+        margin-left: 16px;
+    }
+    .line {
+        top: 250px;
+}
 }

@@ -17,6 +17,7 @@ import {
   openRegister,
   openLogin,
 } from "../../redux/modal/modalSlice.js";
+import Container from "../Container/Container.jsx";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -59,7 +60,7 @@ export default function Header() {
                   Log In
                 </button>
                 <button
-                  className={s.btnReg}
+                  className={`${s.btnReg} ${!isHome ? s.btnRegBorder : ""}`}
                   onClick={() => dispatch(openRegister())}
                 >
                   Registration

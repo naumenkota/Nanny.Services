@@ -1,7 +1,6 @@
 .container{
  
-    padding-left: 128px;
-    padding-right: 128px;
+    padding: 0 128px;
     max-width: 1440px;
     width: 100%;
     margin: 0 auto;
@@ -10,3 +9,20 @@
         
 }
 
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 64px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+}

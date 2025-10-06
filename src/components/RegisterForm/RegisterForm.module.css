@@ -71,6 +71,45 @@ font-weight: 400;
 }
 
 
+@media (max-width: 768px) {
+    .wrapper {
+        width: 90%;
+        padding: 48px;
+        height: auto;
+        
+    }
 
+    .input {
+        width: 100%;
+        
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .title {
+        font-size: 32px;
+    }
+
+    .text {
+        font-size: 15px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .wrapper {
+        padding: 32px;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .text {
+        font-size: 14px;
+    }
+}
 
 

@@ -1,20 +1,22 @@
 .wrapper{
     border-radius: 30px;
-        width: 565px;
-        height: 489px;
-        background: #fbfbfb;
-        padding: 64px;
-        position: relative;
+    width: 565px;
+    height: 489px;
+    background: #fbfbfb;
+    padding: 64px;
+    position: relative;
 }
 
-.title{font-weight: 500;
+.title{
+    font-weight: 500;
     font-size: 40px;
     line-height: 1.2;
     letter-spacing: -0.02em;
     margin-bottom: 20px;
     }
 
-.text{font-weight: 400;
+.text{
+    font-weight: 400;
     font-size: 16px;
     line-height: 1.25;
     color: rgba(17, 16, 28, 0.5);
@@ -28,11 +30,12 @@
 }
 
 .inputWrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 1px;
-        position: relative;
-    }
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    position: relative;
+}
+
 
 .input {
     border: 1px solid rgba(17, 16, 28, 0.1);
@@ -61,8 +64,37 @@
 }
 
 .xIcon{
-position: absolute;
-top: 28px;
-right: 28px;
+    position: absolute;
+    top: 28px;
+    right: 28px;
 }
 
+
+@media (max-width: 768px) {
+    .wrapper {
+        width: 90%;
+        padding: 48px;  
+    }
+
+    .input {
+        width: 100%; 
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrapper {
+        padding: 32px;    
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .text {
+        font-size: 14px;
+    }
+}

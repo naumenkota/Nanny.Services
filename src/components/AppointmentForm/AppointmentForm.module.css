@@ -147,3 +147,61 @@ input:focus {
    
         color: #11101c;
   }
+
+
+
+  @media (max-width: 768px) {
+      .wrapper {
+          width: 90%;
+          padding: 48px;
+          max-height: none;
+      }
+
+      .bigInput,
+      .smallInput,
+      .textarea,
+      .btn {
+          width: 100%;
+      }
+
+      .smallInputs {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 12px;
+          justify-content: space-between;
+      }
+
+      
+
+      .title {
+          font-size: 32px;
+      }
+
+      .text {
+          font-size: 15px;
+      }
+  }
+
+
+  @media (max-width: 480px) {
+      .wrapper {
+          padding: 32px;
+      }
+
+      .smallInputs {
+          flex-direction: column;
+          gap: 16px;
+      }
+
+      .title {
+          font-size: 28px;
+      }
+
+      .text {
+          font-size: 14px;
+      }
+
+      .textarea {
+          width: 100%;
+      }
+  }
