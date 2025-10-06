@@ -8,6 +8,9 @@ export default function Modal({ isOpen, onClose, children }) {
     const handleEsc = (event) => {
       if (event.key === "Escape") {
         onClose();
+        if (document.activeElement) {
+          document.activeElement.blur();
+        }
       }
     };
 

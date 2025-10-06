@@ -32,39 +32,41 @@ export default function Header() {
 
   return (
     <header className={`${s.header} ${isHome ? s.hero : s.green}`}>
-      <img src={logo} alt="Logo" />
-      <div className={s.option}>
-        <Navigation />
-        <div className={s.btns}>
-          {user ? (
-            <>
-              <div className={s.user}>
-                <div className={s.userIcon}>
-                  <UserIcon />
-                </div>
+      <div className={s.inner}>
+        <img src={logo} alt="Logo" />
+        <div className={s.option}>
+          <Navigation />
+          <div className={s.btns}>
+            {user ? (
+              <>
+                <div className={s.user}>
+                  <div className={s.userIcon}>
+                    <UserIcon />
+                  </div>
 
-                <p className={s.name}>{user.name}</p>
-              </div>
-              <button className={s.btnLogOut} onClick={handleLogout}>
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <button
-                className={s.btnLogIn}
-                onClick={() => dispatch(openLogin())}
-              >
-                Log In
-              </button>
-              <button
-                className={s.btnReg}
-                onClick={() => dispatch(openRegister())}
-              >
-                Registration
-              </button>
-            </>
-          )}
+                  <p className={s.name}>{user.name}</p>
+                </div>
+                <button className={s.btnLogOut} onClick={handleLogout}>
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  className={s.btnLogIn}
+                  onClick={() => dispatch(openLogin())}
+                >
+                  Log In
+                </button>
+                <button
+                  className={s.btnReg}
+                  onClick={() => dispatch(openRegister())}
+                >
+                  Registration
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </div>
 

@@ -1,9 +1,11 @@
 import s from "./AppointmentForm.module.css";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 import CloseButton from "../CloseButton/CloseButton.jsx";
+import TimePicker from "../TimePicker/TimePicker.jsx";
+import { useState } from "react";
 
 const AppointmentFormSchema = yup.object().shape({
   name: yup.string().min(2).required(),
@@ -15,10 +17,12 @@ const AppointmentFormSchema = yup.object().shape({
 });
 
 export default function AppointmentForm({ onClose, nanny }) {
+  const [selectedTime, setSelectedTime] = useState("");
+
   const {
     register,
     handleSubmit,
-
+    control,
     formState: { errors },
   } = useForm({
     mode: "onChange",
@@ -67,6 +71,13 @@ export default function AppointmentForm({ onClose, nanny }) {
         />
         <ErrorMessage message={errors.age?.message} />
 
+        <Controller
+          name="time"
+          control={control}
+          render={({ field }) => (
+            <TimePicker value={field.value} onChange={field.onChange} />
+          )}
+        />
         <ErrorMessage message={errors.time?.message} />
 
         <input {...register("email")} placeholder="Email" className={s.input} />

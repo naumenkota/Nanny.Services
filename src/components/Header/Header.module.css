@@ -1,21 +1,26 @@
 .header{
-display: flex;
-    
-justify-content: space-between;
- align-items: center;
-    height: 88px;
-    
+    width: 100%;
     z-index: 10;
 }
 
 .hero {
-    padding: 20px 96px; 
-    max-width: 1376px;
+    padding: 20px 0; 
+    
     background-color: transparent;
     position: absolute;
     width: 100%;
     top: 32px;
     left: 0;
+}
+
+.inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 88px;
+    max-width: 1376px;
+    margin: 0 auto;
+    padding: 0 96px;
 }
 
 .green{

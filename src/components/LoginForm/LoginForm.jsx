@@ -14,7 +14,11 @@ import { ref, child, get } from "firebase/database";
 import { closeLogin } from "../../redux/modal/modalSlice.js";
 
 const LoginFormSchema = yup.object().shape({
-  email: yup.string().email("Invalid email").required("Email is required"),
+  email: yup
+    .string()
+    .transform((value) => value.trim())
+    .email("Invalid email")
+    .required("Email is required"),
   password: yup
     .string()
     .min(6, "Password must be at least 6 characters")
@@ -39,22 +43,21 @@ export default function LoginForm() {
   });
 
   const onSubmit = async (data) => {
-    console.log("Logging in with:", data);
+    const email = data.email;
+    const password = data.password;
 
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
-        data.email,
-        data.password
+        email,
+        password
       );
       const user = userCredential.user;
       console.log(user.uid);
 
       const result = await get(child(ref(database), "users"));
       const users = result.val();
-      const userFromDB = Object.values(users).find(
-        (u) => u.email === data.email
-      );
+      const userFromDB = Object.values(users).find((u) => u.email === email);
 
       if (userFromDB) {
         dispatch(
