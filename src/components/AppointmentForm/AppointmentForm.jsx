@@ -7,12 +7,18 @@ import CloseButton from "../CloseButton/CloseButton.jsx";
 import TimePicker from "../TimePicker/TimePicker.jsx";
 
 const AppointmentFormSchema = yup.object().shape({
-  name: yup.string().min(2).required(),
-  email: yup.string().email().required(),
-  address: yup.string().required(),
-  tel: yup.string().required(),
-  age: yup.number().required(),
-  time: yup.string().required(),
+  name: yup
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .required("Name is required"),
+  email: yup.string().email("Invalid email").required("Email is required"),
+  address: yup.string().required("Adress is required"),
+  tel: yup.string().min(12, "Too short").required("Number is required"),
+  age: yup
+    .string()
+    .matches(/^\d+$/, "Age must be a number")
+    .required("Age is required"),
+  time: yup.string().required("Choose the time"),
 });
 
 export default function AppointmentForm({ onClose, nanny }) {
@@ -52,26 +58,31 @@ export default function AppointmentForm({ onClose, nanny }) {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={s.smallInputs}>
-          <input
-            {...register("address")}
-            placeholder="Address"
-            className={s.smallInput}
-          />
-          <ErrorMessage message={errors.address?.message} />
+          <div className={s.inputWrapper}>
+            <input
+              {...register("address")}
+              placeholder="Address"
+              className={s.smallInput}
+            />
+            <ErrorMessage message={errors.address?.message} />
+          </div>
+          <div className={s.inputWrapper}>
+            <input
+              {...register("tel")}
+              placeholder="+380"
+              className={s.smallInput}
+            />
+            <ErrorMessage message={errors.tel?.message} />
+          </div>
 
-          <input
-            {...register("tel")}
-            placeholder="+380"
-            className={s.smallInput}
-          />
-          <ErrorMessage message={errors.tel?.message} />
-
-          <input
-            {...register("age")}
-            placeholder="Child's age"
-            className={s.smallInput}
-          />
-          <ErrorMessage message={errors.age?.message} />
+          <div className={s.inputWrapper}>
+            <input
+              {...register("age")}
+              placeholder="Child's age"
+              className={s.smallInput}
+            />
+            <ErrorMessage message={errors.age?.message} />
+          </div>
 
           <div className={s.inputWrapper}>
             <Controller
@@ -86,19 +97,23 @@ export default function AppointmentForm({ onClose, nanny }) {
         </div>
 
         <div className={s.bigInputs}>
-          <input
-            {...register("email")}
-            placeholder="Email"
-            className={s.bigInput}
-          />
-          <ErrorMessage message={errors.email?.message} />
+          <div className={s.inputWrapper}>
+            <input
+              {...register("email")}
+              placeholder="Email"
+              className={s.bigInput}
+            />
+            <ErrorMessage message={errors.email?.message} />
+          </div>
 
-          <input
-            {...register("name")}
-            placeholder="Father's or mother's name"
-            className={s.bigInput}
-          />
-          <ErrorMessage message={errors.name?.message} />
+          <div className={s.inputWrapper}>
+            <input
+              {...register("name")}
+              placeholder="Father's or mother's name"
+              className={s.bigInput}
+            />
+            <ErrorMessage message={errors.name?.message} />
+          </div>
 
           <textarea
             {...register("comment")}

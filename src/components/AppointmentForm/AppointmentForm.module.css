@@ -133,7 +133,17 @@ input:focus {
         }
 
 
-  .inputWrapper {
-      display: flex;
-      flex-direction: column;
+  .inputWrapper { 
+    display: flex;
+        flex-direction: column;
+        gap: 1px;
+        position: relative
+  }
+
+
+.smallInput::placeholder, 
+.bigInput::placeholder,
+.textarea::placeholder {
+   
+        color: #11101c;
   }

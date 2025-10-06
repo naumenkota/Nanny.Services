@@ -66,6 +66,7 @@
     font-size: 16px;
     line-height: 1.5;
     color: #11101c;
+   
 
 }
 .optionWrapper{
@@ -77,4 +78,5 @@
     position: absolute;
     top: 100%;
     right: 0;
+    z-index: 20;
 }

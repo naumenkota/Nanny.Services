@@ -2,6 +2,7 @@ import s from "./Reviews.module.css";
 import RateIcon from "../../assets/rate.svg?react";
 import { useState } from "react";
 import AppointmentForm from "../AppointmentForm/AppointmentForm";
+import Modal from "../Modal/Modal.jsx";
 
 export default function Reviews({ reviews, nanny }) {
   const [showForm, setShowForm] = useState(false);
@@ -24,17 +25,14 @@ export default function Reviews({ reviews, nanny }) {
           </li>
         ))}
       </ul>
-      {!showForm ? (
-        <button
-          type="button"
-          className={s.btn}
-          onClick={() => setShowForm(true)}
-        >
-          Make an appointment
-        </button>
-      ) : (
-        <AppointmentForm nanny={nanny} />
-      )}
+
+      <button type="button" className={s.btn} onClick={() => setShowForm(true)}>
+        Make an appointment
+      </button>
+
+      <Modal isOpen={showForm} onClose={() => setShowForm(false)}>
+        <AppointmentForm onClose={() => setShowForm(false)} nanny={nanny} />
+      </Modal>
     </div>
   );
 }
