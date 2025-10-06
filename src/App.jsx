@@ -57,21 +57,20 @@ export default function App() {
   return (
     <>
       <Header />
-      <Container>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/nannies" element={<Nannies />} />
-          <Route
-            path="/favorites"
-            element={
-              <PrivateRoute>
-                <Favorites />
-              </PrivateRoute>
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Container>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/nannies" element={<Nannies />} />
+        <Route
+          path="/favorites"
+          element={
+            <PrivateRoute>
+              <Favorites />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   );
 }
