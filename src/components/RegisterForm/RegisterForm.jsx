@@ -11,6 +11,7 @@ import { useState } from "react";
 import PasswordToggle from "../PasswordToggle/PasswordToggle.jsx";
 import { useDispatch } from "react-redux";
 import { closeRegister } from "../../redux/modal/modalSlice.js";
+import { toast } from "react-hot-toast";
 
 const RegisterFormSchema = yup.object().shape({
   name: yup
@@ -59,6 +60,14 @@ export default function RegisterForm() {
       handleClose();
     } catch (error) {
       console.error("Registration error:", error.message);
+
+      if (error.code === "auth/email-already-in-use") {
+        toast.error("This email is already in use. Please use another one.");
+      } else {
+        toast.error(
+          "An error occurred during registration. Please try again later."
+        );
+      }
     }
   };
 

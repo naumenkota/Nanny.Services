@@ -5,6 +5,7 @@ import * as yup from "yup";
 import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 import CloseButton from "../CloseButton/CloseButton.jsx";
 import TimePicker from "../TimePicker/TimePicker.jsx";
+import { toast } from "react-hot-toast";
 
 const AppointmentFormSchema = yup.object().shape({
   name: yup
@@ -33,7 +34,7 @@ export default function AppointmentForm({ onClose, nanny }) {
   });
 
   const onSubmit = () => {
-    alert("Form submitted successfully!");
+    toast.success("Form submitted successfully!");
   };
 
   return (

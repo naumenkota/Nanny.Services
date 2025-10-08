@@ -6,11 +6,13 @@ import Favorites from "./pages/Favorites/Favorites.jsx";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 import useAuthListener from "./hooks/useAuthListener.js";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   useAuthListener();
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <Header />
 
       <Routes>

@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/auth/authSlice.js";
 import { ref, child, get } from "firebase/database";
 import { closeLogin } from "../../redux/modal/modalSlice.js";
+import { toast } from "react-hot-toast";
 
 const LoginFormSchema = yup.object().shape({
   email: yup
@@ -71,6 +72,11 @@ export default function LoginForm() {
         console.error("User not found in database");
       }
     } catch (error) {
+      if (error.code === "auth/invalid-credential") {
+        toast.error(
+          "Incorrect email or password. Please check your details and try again."
+        );
+      }
       console.error("Login error:", error.code, error.message);
     }
   };
